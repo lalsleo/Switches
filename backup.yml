@@ -6,11 +6,15 @@
     - name: Backup current switch config (ios)
       ios_config:
         backup: yes
+        backup_options:
+          dir_path: /var/lib/awx/projects/backup_switches
       register: backup_ios_location
       when: ansible_network_os == 'ios'
 
     - name: Backup current switch config (dellos6)
       dellos6_config:
         backup: yes
+        backup_options:
+          dir_path: /var/lib/awx/projects/backup_switches
       register: backup_dellso6_location
       when: ansible_network_os == 'dellos6'
